@@ -1,0 +1,19 @@
+table.form-table {
+    width: 100%;
+    border-collapse: collapse;
+    .control-td{
+        width: 90%;
+    }
+    tr.outer-tr{
+        border: 1px solid #000;
+    }
+    tr.outer-tr{
+        td.special-td, td.action-td{
+            padding: 10px;
+            border: 1px solid #000;
+        }
+    }
+
+ 
+
+}

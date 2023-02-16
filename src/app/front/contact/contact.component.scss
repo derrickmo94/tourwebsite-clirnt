@@ -1,0 +1,47 @@
+@import "../../../global-scss.scss";
+
+.section-wrapper{
+    color: $color-white;
+    padding-top: $size-6-5rem;
+    padding-bottom: $size-6-5rem;
+    background-color: $color-black;
+    p.title{
+        font-size: $size-2-5rem;
+        font-weight: bold;
+        border: $test-border;
+        text-transform: capitalize;
+   
+    }
+        .section-content{
+            border: $test-border;
+            margin-top: $size-2rem;
+            .col{
+                p:first-child{
+                    font-size: $size-1-5rem;
+                    margin-left: $size-10px;
+                    font-weight: bold;
+                    text-transform: capitalize;
+                }
+                p:nth-child(2){
+                    font-size: $size-1rem;
+                    color: $color-silver-2;
+                }
+                p:nth-child(3){
+                    color: $color-orange-bright;
+                }
+            }
+        }
+        .map{
+            google-map{
+              height: 400px;
+              width: 100%;
+            }
+            .map-overlay{
+                position: absolute;
+                top: 0px;
+                background-color: #000;
+                width: 100%;
+                height: inherit;
+            }
+        }
+  }

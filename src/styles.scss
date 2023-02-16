@@ -1,0 +1,67 @@
+/* You can add global styles to this file, and also import other style files */
+//@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import 'assets/scss/modules/_fonts.scss';
+@import '~@swimlane/ngx-datatable/index.css';
+@import '~@swimlane/ngx-datatable/themes/material.scss';
+@import '~@swimlane/ngx-datatable/themes/dark.scss';
+@import '~@swimlane/ngx-datatable/themes/bootstrap.scss';
+@import '~@swimlane/ngx-datatable/assets/icons.css';
+@import '~font-awesome/scss/font-awesome.scss';
+
+@import '~swiper/swiper-bundle.min.css';
+@import './global-scss.scss';
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins/_breakpoints";
+
+@import '~@angular/material/theming';
+@include mat-core();
+
+
+$mat-primary-scheme: (
+  100: #ff5c00,
+  500: #ff8600,
+  700: #f43508,
+  contrast: (
+    100: rgba(255,255,255,0.87),
+    500: #ffffff,
+    700: #ffffff,
+  )
+);
+$mat-accent-scheme: (
+  100: #06c5ff,
+  500: #00ade0,
+  700: #13415a,
+  contrast: (
+    100: rgba(0,0,0,0.87),
+    500: rgba(0,0,0,0.87),
+    700: #ffffff,
+  )
+);
+$mat-primary-palette: mat-palette($mat-primary-scheme);
+$mat-accent-palette: mat-palette($mat-accent-scheme);
+
+$app-light-theme: mat-light-theme($mat-primary-palette, $mat-accent-palette);
+
+@include angular-material-theme($app-light-theme);
+
+// following section is for dark mode.
+// use appropriate class name for darkMode
+$app-dark-theme: mat-dark-theme($mat-primary-palette, $mat-accent-palette);
+.darkMode {
+  @include angular-material-theme($app-dark-theme);
+}
+
+
+
+
+    
+
+
+/* Importing Bootstrap SCSS file. */
+//@import '~bootstrap/scss/bootstrap';
+

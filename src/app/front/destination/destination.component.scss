@@ -1,0 +1,128 @@
+@import "../../../global-scss.scss";
+.main-content{
+    background-image: url('/static/tourapi/angular/assets/images/tour_23.jpg');
+    background-size: cover;
+    background-attachment: scroll;
+    background-repeat: no-repeat;
+    color: $color-white;
+
+
+    .section-content{
+        padding: 6% 0px 0px;
+        background: rgb(0,0,0);
+        background: linear-gradient(0deg, rgba(0,0,0,1) 79%, rgba(0,0,0,0.15730042016806722) 100%);
+       .section-header{
+           
+            &>p:first-child{
+                text-transform: uppercase;
+                color: $color-white;
+                font-weight: 600;
+                font-size: $size-1rem;
+            }
+            &>p:nth-child(2){
+                text-transform: capitalize;
+                font-weight: 600;
+                font-size: $size-2-5rem;
+            }
+        }
+        .content-wrapper{
+            //display: flex;         
+            .col{            
+                mat-card{
+                    background-color: $color-white;
+                    padding: 0px;
+                    border-radius: 20px;
+                    outline: none;
+                    border: $test-border;
+                    position: relative;
+                    height: 400px;
+                    img{
+                        border-radius: 20px 20px 0px 0px;
+                        margin: 0px;
+                    }  
+                    mat-card-content{                
+                        padding-top: 35px;
+                        .destination-info{
+                            .destination-title{                          
+                                font-size: 25px;
+                                font-weight: bolder;
+                                color: $color-black-light;
+                                text-transform: capitalize;
+                                -webkit-transition: color 1s;
+                                -moz-transition: color 1s;
+                                -ms-transition: color 1s;
+                                -o-transition: color 1s;
+                                transition: color 1s;     
+                            }
+                            .destination-desc{
+                                padding: 0 10px;
+                                color: $color-silver;
+                                font-size: 16px;
+                                font-style: italic;
+                                display: -webkit-box;
+                                overflow: hidden;
+                                -webkit-line-clamp: 4;
+                                -webkit-box-orient: vertical;
+                            }
+                        }
+                        .overlay{
+                            position: absolute;
+                            top: 170px; 
+                            left: 0;                          
+                            .destination-overlay{        
+                                img{
+                                    border-radius:  $border-r-p-50;
+                                    width: 60px;
+                                    height: 60px;
+                                    box-shadow: 1px 1px 6px 2px #fff,-1px -1px 6px 2px #fff;
+                                }                     
+                            }  
+                        } 
+                        .mat-card-action{
+                            border: $test-border;
+                            border-radius: 20px;
+                            position: absolute;
+                            bottom: 0;
+                            left: 0;
+                            right: 0;                                        
+                            .col{
+                                border: $test-border;
+                                border-radius: 20px;
+                            }
+                            .action-one{
+                                font-size: 16px;
+                                color: $color-orange-bright;
+                            }
+                            .action-link{
+                                text-align: right;
+                                .action-two{
+                                    font-size: 16px;
+                                    color: $color-black-light;                                   
+                                }
+                            }            
+                        }                  
+                    }                 
+                }
+  
+                .destination-card:hover{
+                    cursor: default;
+                    mat-card-content{
+                        p.destination-title{
+                            color: $color-orangered;                        
+                        }
+                        .destination-desc{
+                            color: $color-orangered;
+                        }
+                    }
+                    .matcard-action{
+                        .action-two{
+                            text-decoration: underline;
+                            text-decoration-color: $color-orangered;
+                            color: $color-orangered;
+                        }
+                    }           
+                }  
+            }           
+        }   
+    }
+}

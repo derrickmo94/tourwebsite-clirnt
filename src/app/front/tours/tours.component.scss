@@ -1,0 +1,355 @@
+@import "../../../global-scss.scss";
+
+.main-content{
+    //padding: 10% 0px 0px 0px;
+    background-color: $color-black;
+    color: $color-white;
+    padding-bottom: 5%;
+}
+
+.tours-container{   
+   
+    .col{
+        border: $test-border;
+    }
+    .top-wrapper{
+        background-image: url('/static/tourapi/angular/assets/images/sea_1.jpg');
+        background-attachment: scroll;
+        background-size: cover;  
+        .top-overlay{
+            width: 100%;
+            padding-top: 10%;
+            background: rgb(0,0,0);
+            background: linear-gradient(0deg, rgba(0,0,0,1) 28%, rgba(10,9,9,0.7496506590280474) 61%, rgba(0,0,0,0.3117624602702834) 84%);
+            .search-tours{
+                .search-header{
+                    font-weight: 500;
+                    border: $test-border;
+                    color: $color-white;       
+                    font-size: $size-1-5rem;
+                }
+                mat-card{
+                    //width: 90%;
+                    //margin: 2% auto;
+                    border-radius: $size-20px;
+                    padding: 2% 10px;
+                    mat-form-field{
+                        width: 18.5%;
+                    } 
+                    button{
+                        background-color: $color-orange-bright;
+                        color: $color-white;
+                        margin-left: 10px;
+                        margin-bottom: 8px;
+                        vertical-align: middle;
+                        outline: none;
+                    }
+                }
+            }
+
+            .destinations-slider{
+                .swiper-container{
+                    height: auto;
+                    .swiper-wrapper{              
+                        padding-bottom: 10px 10px;
+                    }
+                    mat-card{
+                        background-color: $color-white;
+                        padding: 0px;
+                        border-radius: 10px;              
+                        outline: none;
+                        img{
+                            border-radius: 10px;
+                            width: 100%;
+                            height: 120px;
+                        }  
+                        .country-overlay{   
+                            background-color: rgba(0, 0, 0, 0);
+                            position: absolute;
+                            top: 0px;
+                            height: inherit;
+                            width: inherit;
+                         
+                            color: $color-white;
+                            text-align: center;
+                            border-radius: 10px;
+                            .container{
+                                height: inherit;
+                                border: $test-border;
+                                .row{
+                                    border: $test-border;
+                                    height: inherit;
+                                }
+                            }        
+                        }
+                    }     
+                }   
+            } 
+        }
+    } 
+    .tours-content{
+        .tours-main-content{
+            .tour-link{
+                mat-card{
+                    padding: 0;
+                    border-radius: 20px;
+                    outline: none;           
+                    color: $color-white;
+                    position: relative;
+                    img{
+                        border-radius: 20px;
+                        height:350px;
+                        width:100%;
+                       
+                    }                  
+                    .card-overlay{
+                        border: $test-border;
+                        border-radius: 20px;
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        padding: 20px 10px 0px;  
+                        //background-color: #00000062;     
+                        background-color: #070e1185;         
+                        .overlay-body{
+                            border: $test-border;
+                          .body-content{
+                                position: absolute;
+                                top: 40%; 
+                                @include media-breakpoint-up(md){                                                                      
+                                }   
+                                @include media-breakpoint-up(lg){                                        
+                                }                     
+                                .rating{
+                                    .reviews{
+                                        font-size: medium;
+                                    }
+                                }
+                                .overlay-title{   
+                                    display: -webkit-box;
+                                    overflow: hidden;
+                                    -webkit-line-clamp: 2;
+                                    -webkit-box-orient: vertical;
+                                    -webkit-transition: color 1s;
+                                    -moz-transition: color 1s;
+                                    -ms-transition: color 1s;
+                                    -o-transition: color 1s;
+                                    transition: color 1s;  
+                                    span{
+                                        font-size: 1.5rem;
+                                        font-weight: bolder;
+                                    }                    
+                                }
+                                .overlay-text{
+                                    color: $color-white-blure-2;
+                                    font-size: 1rem;
+                                    font-style: italic;  
+                                    display: -webkit-box;
+                                    overflow: hidden;
+                                    -webkit-line-clamp: 3;
+                                    -webkit-box-orient: vertical;
+                                }
+                            }                          
+                            .overlay-footer{
+                                position: absolute;
+                                bottom: 5px;
+                                left: 0;
+                                color: $color-white-blure-2;
+                                border-radius: 20px;
+                                .icon-text{
+                                    font-size: 1.5em;
+                                    margin-left: 4px;
+                                }
+                            }     
+                        }  
+                            
+                    }  
+                }
+            }
+            .tour-link:hover{
+                .overlay-title{
+                    color: $color-orangered;
+                }
+            }
+        }
+        .tours-side-content{
+            .latest-tours{
+                background-color: $color-white;
+                width: 100%;    
+                padding-top: 20px;   
+                padding-bottom: 20px; 
+                border-radius: $size-20px;          
+                & > p{
+                    color: $color-black-light;
+                    font-size: $size-1-5rem;
+                    font-weight: bolder;
+                }
+                & > mat-card{
+                    display: $display-flex;
+                    padding: 0px;
+                    margin-top: 20px;
+                    border-radius: 10px;
+                    .latest-tour-img{
+                        img{
+                            width: 100%;
+                            height: 130px;
+                            border-radius: 8px;
+                            @include media-breakpoint-up(md){
+                                //height: 150px;
+                            }
+                            @include media-breakpoint-up(lg){
+                                //height: 100px;
+                            }
+                        }
+                        .latest-tour-card-overlay{
+                            background-color: rgba(127, 255, 212, 0.404);
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            right: 0;
+                            bottom: 0;
+                            border-radius: 10px;
+                        }
+                    }  
+                    .tour-info{  
+                        &>p:first-child{
+                            border: $test-border;
+                            font-size: 18px;
+                            color: rgba(6, 21, 34, 0.877);
+                            font-weight: 500;
+                            display: -webkit-box;
+                            overflow: hidden;
+                            -webkit-line-clamp: 1;
+                            -webkit-box-orient: vertical;
+                            -webkit-transition: color 1s;
+                            -moz-transition: color 1s;
+                            -ms-transition: color 1s;
+                            -o-transition: color 1s;
+                            transition: color 1s;  
+                        }
+                        .tour-duration{
+                            color: $color-orangered;
+                        }                       
+                    }                 
+                }
+            }
+            .tour-category{
+                width: 100%;
+                color: white;
+                background-color: rgba(0, 49, 95, 0.986);
+                padding: 20px 20px;   
+                border-radius: $size-20px; 
+                margin-top: 20px;
+                & >p{
+                    font-size: $size-1-5rem;
+                    line-height: $size-1-5rem;
+                    margin: 0px;
+                    color: #fff;
+                    font-size: $size-1-5rem;
+                    font-weight: bolder;
+    
+                }
+                ul{
+                    margin: 0px;
+                    padding: 0px;
+                    list-style-type: none;
+                    margin-top: 20px;
+                    li{
+                        font-size: $size-1rem;
+                        font-weight: 550;
+                        line-height: $size-2rem;
+                    }
+                }
+            }
+            .recent-articles{
+                margin-top: 20px;
+                background-color: $color-black;
+              
+                padding-top: 20px;  
+                padding-bottom: 20px;  
+                border-radius: $size-20px;  
+                color: $color-white;   
+                border: 1px solid #fff;     
+                & > p{
+                    font-size: $size-1-5rem;
+                    font-weight: 500;
+                    
+                }
+                & > mat-card:not(:last-child){
+                    border-bottom: .5px outset $color-white-blure-2;
+                }
+                & > mat-card{
+                    padding: 0px;
+                    padding-bottom: 4px;
+                    margin-top: 20px;
+                    background-color: $color-black;
+                    color: $color-white;
+                    img{
+                        width: 100%;
+                        height: 80px;
+                        border-radius: 10px;
+                        @include media-breakpoint-up(md){
+                            height: 150px;
+                        }
+                        @include media-breakpoint-up(lg){
+                            height: 100px;
+                        }
+                    }
+                    .article-info{
+                      
+                        & > div:last-child{                      
+                            p:first-child{
+                                font-weight: 500;
+                                font-size: 18px;
+                            }
+                            p:last-child{
+                                color: $color-grey;
+                                font-weight: 400;
+                                .fa-clock{
+                                    font-size: 16px;
+                                }
+                                span{
+                                    font-size: 18px;
+                                }
+                             
+                             
+                            }
+                        }
+                    }
+                   
+                }
+            }
+            .question{
+                color: white;
+                background-color: $color-orangered;
+                padding-top: 20px;  
+                padding-bottom: 10px;   
+                border-radius: $size-20px; 
+                margin-top: 20px;
+                & >p:first-child{
+                    font-size: $size-1-5rem;            
+                    color: #fff;
+                    font-weight: bolder;   
+                }
+                & > p:nth-child(2){
+                    font-size: $size-18px;
+                    font-weight: 500;
+                    margin: 10px 0px;
+                  
+                }
+                & >p:nth-child(3){
+                    font-size: $size-2rem;
+                    font-weight: 200;
+                    margin-bottom: 20px;
+                } 
+                &>p:nth-child(4){
+                    font-size: $size-1-5rem;
+                    font-weight: 300;
+
+                }            
+            }
+        }
+    }
+}

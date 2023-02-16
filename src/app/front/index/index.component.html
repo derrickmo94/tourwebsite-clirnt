@@ -1,0 +1,376 @@
+
+<div class="main-content">
+    <div class="slider">
+        <div  class="swiper-container main-slider slide-wrapper" [swiper]="config1" >
+            <div class="swiper-wrapper" >
+                <div class="swiper-slide" *ngFor="let dest of destinations" >
+                    <img src="{{ dest.image }}" />         
+                    <div class="slide-overlay">       
+                        <div class="container  slider-info pl-md-3 pr-md-3">
+                            <div class="row info-title">
+                                <div class="col col-12 mb-2 mb-lg-0">                   
+                                    <p>{{ dest.name }}</p>
+                                    <p>{{ dest.tag_line }}</p>  
+                                </div>
+                            </div>
+                            <div class="row info-content mt-4">
+                                <div class="col col-12 col-md-6 slider-buttons mb-2 mb-lg-0">
+                                    <div class="row info-buttons">
+                                        <div class="col col-7 col-md-7 p-0 ">
+                                            <span class="text-center btn-block btn-primary rounded-lg pt-2 pb-2 pl-0 pr-0" >From this destination</span>
+                                        </div>
+                                        <div class="col col-5 col-md-5 p-0 align-self-center">
+                                            <a class="btn btn-block btn-secondary rounded-pill pl-0 pr-0" [routerLink]="['/tours/destinations',dest.destination_slug]" >Choose a tour</a>
+                                        </div> 
+                                    </div>
+                                </div>     
+                                <div class="col col-12 col-md-5 offset-md-1 map-marker" *ngIf="dest.tag_text">
+                                    <div class="row p-0">
+                                        <div class="col col-2 p-0 justify-content-end">
+                                            <i class="fas fa-map-marker-alt"></i> 
+                                        </div>
+                                        <div class="col col-10 p-0 map-marker-desc">                                
+                                           {{ dest.tag_text }}
+                                        </div>   
+                                    </div>
+                                </div>                
+                            </div>
+                        </div>            
+                    </div>
+                </div>
+            </div>
+            
+            <div class="swiper-container swiper-two pl-1 pr-1" [swiper]="config2" *ngIf="tour_categories" >
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" *ngFor="let t_category of tour_categories; let i = index">
+                        <a class="tour-link"  [routerLink]="['/tours/categories', t_category.category_slug]">   
+                            <div class="container">  
+                                <div class="row img-wrapper">
+                                    <div class="col col-12 p-0 pt-3 pb-3">
+                                        <img class="rounded-circle mx-auto d-block" src="{{t_category.image}}" /> 
+                                    </div>
+                                    <div class="col-12 p-0 tour-type">
+                                        <p>{{t_category.name}}</p>
+                                    </div>   
+                                </div>
+                            </div>
+                        </a>
+                    </div> 
+                </div>           
+                <button class="btn btn-outline swiper-two-prev-nav d-none d-md-block rounded-circle" >
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <button class="btn btn-outline swiper-two-next-nav d-none d-md-block rounded-circle" >
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>                  
+        </div>        
+    </div>
+
+    <section class="popular-tours" *ngIf="tours">
+        <div class="container">
+            <div class="row mx-auto mb-2 section-header dynamic-content-header">
+                <div class="col col-12 col-sm-5 pl-0 pr-0 mr-auto">
+                    <h6 class="header-title">Popular</h6>
+                    <h6 class="header-desc">Most popular holiday tours</h6>
+                </div>          
+                <div class="col col-6 col-sm-3 pl-0 pr-0 align-self-end">
+                    <a href="javascript:void(0)" routerLink="/tours" class="btn btn-outline rounded-pill pt-2 pb-2 btn-block">View all tours</a>
+                </div>
+                <div class="col col-3 col-sm-1  pb-0 align-self-end">
+                    <button class="btn btn-outline rounded-circle pt-2 pb-2 prev-3"><i class="fas fa-arrow-left"></i></button>
+                </div>
+                <div class="col col-3 col-sm-1 pb-0 align-self-end">
+                    <button class="btn btn-outline rounded-circle pt-2 pb-2 next-3"><i class="fas fa-arrow-right"></i></button>
+                </div>            
+            </div>
+        </div>
+        <div class="section-content">
+            <div class="swiper-container" [swiper]="config3" >
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" *ngFor="let tour of tours" >   
+                        <a class="tour-link" href="javascript:void(0)" [routerLink]="['/tour',tour.tour_slug]">                      
+                            <mat-card>                       
+                                <img src="{{tour.image}}" />    
+
+                                <div class="card-overlay">
+                                    <mat-chip-list>
+                                        <mat-chip color="primary" class="discount-tag" *ngIf="tour.discount > 0"> {{ (tour.discount/100)|percent }} off</mat-chip>
+                                        <mat-chip color="accent" class="status-tag" *ngIf="tour.new_tag">{{ tour.new_tag }}</mat-chip>
+                                    </mat-chip-list> 
+                                    <div class="container">
+                                        <div class="row overlay-body">  
+                                            <div class="body-content">
+                                                <div class="col col-12 px-0 rating">
+                                                    <ngb-rating [(rate)]="tour.rating">
+                                                        <ng-template let-fill="fill" let-index="index">
+                                                            <span class="star" [class.filled]="fill === 100">&#9733;</span>
+                                                        </ng-template>
+                                                    </ngb-rating>
+                                                    <span class="reviews">(200 Reviews)</span>
+                                                </div>               
+                                                <div class="col col-12 px-1 overlay-title" *ngIf="tour.name">
+                                                    <span>{{tour.name}}</span>
+                                                </div> 
+                                                                        
+                                                <div class="col col-12 p-0 overlay-text" *ngIf="tour.description">{{tour.description}}</div> 
+                                            </div>
+                                            <div class="col col-12 overlay-footer" *ngIf="tour.duration">
+                                                <i class="far fa-clock fa-2x"></i>            
+                                                <span class="icon-text">{{tour.duration}} days</span>
+                                            </div> 
+                                            
+                                        </div>    
+                                    </div>                                     
+                                </div>                       
+                            </mat-card>    
+                        </a>
+                    </div>                     
+                </div>             
+            </div>  
+        </div>
+        <div class="section-footer">
+            <div class="swiper-container" [swiper]="config6" >
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" *ngFor="let mandate of tours" > 
+                        <div class="container">
+                            <div class="row tour-mandate ">
+                                <div class="col col-12 p-0 text-center"> 
+                                    <img class="rounded-circle" src="{{ mandate.image }}" /> 
+                                </div>
+                                <div class="col col-12 p-0 mandate-desc">
+                                    <p class="mandate-title text-center">mandate</p>
+                                    <p class="mandate-txt text-center">mandate description</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+        </div>        
+    </section>
+
+   <!-- <mat-card class="search-tour">
+        <div class="section-header">
+            <div class="sub-header-1">
+                <h3>search tour now</h3>
+                <h1>Ready to rest? We are ready to help with the search</h1>
+            </div>          
+        </div>
+        <div class="section-content">
+            <div class="input-set">
+                <form [formGroup]="searchToureForm" class="search-tour-form" [style.fontSize.px]="16">                    
+                    <mat-form-field appearance="outline">
+                        <mat-label>Key word</mat-label>
+                        <input matInput type="text" id="keyword" formControlName="keyWord">
+                        <span matSuffix><mat-icon>search</mat-icon></span>
+                    </mat-form-field>
+                                      
+                    <mat-form-field appearance="outline">
+                        <mat-label>Activity</mat-label>
+                        <mat-select required id="activity" formControlName="activity">
+                            <mat-option>-- None --</mat-option>
+                            <mat-option value="option">Option</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                                       
+                    <mat-form-field appearance="outline">
+                        <mat-label>Destination</mat-label>
+                        <mat-select id="destination" required formControlName="destination">
+                            <mat-option>-- None --</mat-option>
+                            <mat-option value="option">Option</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                           
+                    <mat-form-field appearance="outline">
+                        <mat-label>Duration</mat-label>
+                        <mat-select id="duration" required formControlName="duration">
+                            <mat-option>-- None --</mat-option>
+                            <mat-option value="option">Option</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                           
+                    <mat-form-field color="accent" appearance="outline">
+                        <mat-label>Date</mat-label>
+                        <input matInput id="date" [matDatepicker]="picker1" formControlName="date">
+                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+                    </mat-form-field>
+                    <button mat-fab type="submit"><mat-icon>search</mat-icon></button>                                  
+                </form>
+            </div>
+        </div>
+    </mat-card>-->
+        
+    <section class="popular-destinations" *ngIf="destinations">
+        <div class="container">
+            <div class="row mx-auto mb-2 section-header dynamic-content-header">
+                <div class="col col-12 col-sm-5 pb-0 pr-0 pl-0 align-self-end mr-auto">
+                    <h6 class="header-title">True now</h6>
+                    <h6 class="header-desc">Popular Destinations</h6>
+                </div>          
+                <div class="col col-6 col-sm-3 pb-1 align-self-end">
+                    <a href="javascript:void(0)" routerLink="/destinations" class="btn btn-outline rounded-pill pt-2 pb-2 btn-block">View all</a>
+                </div>
+                <div class="col col-3 col-sm-1 pb-1  align-self-end">
+                    <button class="btn btn-outline rounded-circle pt-2 pb-2 prev-4"><i class="fas fa-arrow-left"></i></button>
+                </div>
+                <div class="col col-3 col-sm-1 pb-1 align-self-end">
+                    <button class="btn btn-outline rounded-circle pt-2 pb-2 next-4"><i class="fas fa-arrow-right"></i></button>
+                </div>            
+            </div>
+        </div>
+        <div class="section-content">
+            <div  class="swiper-container" [swiper]="config4" >
+                <div class="swiper-wrapper">       
+                    <div class="swiper-slide" *ngFor="let dest of destinations">  
+                        <mat-card class="destination-card">                       
+                            <img height="200px" width="100%"  src="{{dest.image}}" />  
+                            <mat-card-content>                                   
+                                <div class="container overlay">     
+                                    <div class="row destination-overlay">
+                                        <div class="col col-5 mr-auto "> 
+                                            <img class="img-overlay"  src="{{dest.image}}" />  
+                                        </div>
+                                        <div class="col col-5 align-self-center">
+                                            <a class="btn-overlay btn btn-secondary btn-sm rounded-pill p-2" href="#">view details</a>
+                                        </div>
+                                    </div>   
+                                </div> 
+                                <div class="conatainer">
+                                    <div class="row destination-info">
+                                        <div class="col col-12">
+                                            <p class="destination-title">{{dest.name}}</p>
+                                        </div>
+                                        <div class="col col-12">
+                                            <p class="destination-desc">
+                                                {{dest.description}}
+                                            </p>
+                                        </div>
+                                    </div> 
+                                
+                                    <div class="container mat-card-action">
+                                        <div class="row">
+                                            <div class="col col-5">
+                                                <span class="action-one ">15 tours</span>
+                                            </div>
+                                            
+                                            <div class="col col-7 action-link">
+                                                <a class="action-two btn btn-outline-info border-1 rounded-lg"  [routerLink]="['/tours/destinations',dest.destination_slug]">View all tours</a>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                </div>
+                            </mat-card-content>                                                                  
+                        </mat-card>                   
+                    </div>
+                </div>                        
+            </div>  
+        </div>  
+    </section>
+
+    <section class="top-destinations">
+        <div class="container">
+            <div class="section-header" *ngIf="settings">     
+                <div class="row sub-header-1">
+                    <div class="col col-12">
+                        <h6 class="title">Top destinations</h6>
+                        <h6 class="sub-title">{{ settings.company_name }}</h6>
+                    </div>
+                </div>
+
+                <div class="row sub-header-2">
+                    <div class="col col-12">
+                        <p class="description">{{ settings.description }}</p>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="section-content" *ngIf="destinations">
+                <div  class="swiper-container" [swiper]="config5" >
+                    <div class="swiper-wrapper">                  
+                        <mat-card class="swiper-slide" *ngFor="let dest of destinations" >                       
+                            <img src="{{dest.image}}" />
+                            <div class="overlay">
+                                <div class="container">
+                                    <div class="row justify-content-center">
+                                        <div class="col col-10 align-self-center">
+                                            <p>{{dest.name}}</p>  
+                                        </div>
+                                    </div>
+                                </div>                           
+                            </div>                              
+                        </mat-card>                                        
+                    </div>          
+                </div>  
+            </div>   
+        </div>
+    </section>
+
+    <section class="tour-sales" [ngStyle]="{backgroundImage:'url('+week_sale.image +')'}">
+        <div class="sales-overlay"></div>
+        <div class="sales-wrapper">
+            <div class="container sales-content">
+                <div class="row">
+                    <div class="col">
+                        <p class="title">sale</p>
+                        <p class="sub-title">Weak Discount <span class="text-center rounded-pill discount-tag">{{week_sale.discount/100|percent}} off</span></p>
+                    </div>            
+                </div>
+                <div class="row">
+                    <div class="col col-12 col-md-6 mb-2">
+                        <h5>&raquo;&raquo;&raquo; {{week_sale.name|titlecase}} &laquo;&laquo;&laquo;</h5>
+                        <p class="sales-desc">{{week_sale.description}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-12 col-md-4 col-lg-3 mb-3 align-self-center d-none d-md-block">
+                        <div class="btn-primary rounded-pill btn-block text-center pt-3 pb-3 pt-md-3 pb-md-3">Promotional tour</div>
+                    </div>
+                    <div class="col col-12 col-md-3 col-lg-2 align-self-center">
+                        <a class="btn btn-outline rounded-pill btn-block pt-3 pb-3 pt-md-2 pb-md-2" [routerLink]="['/tour', week_sale.tour_slug]">Choose tour</a>
+                    </div>                   
+                </div>              
+            </div>
+        </div>
+    </section>
+
+    <section class="blog" *ngIf="blog_articles">
+        <div class="blog-wrapper">
+            <div class="container">
+                <div class="row mb-2">
+                    <div class="col col-8 mx-auto">
+                        <p class="title">blog</p>
+                        <p class="sub-title">Travel articles</p>
+                    </div>
+                </div>
+                
+                <div class="row section-content">
+                    <div class="col col-12 col-md-6 mt-3" *ngFor="let article of blog_articles|slice:0:2;let i = index">
+                        <a class="blog-link" href="javascript:void(0)" [routerLink]="['/blog/articles',article.article_slug]">
+                            <mat-card class="p-0 rounded-lg">
+                                <img class="rounded-lg" src="{{article.image}}" alt="">                    
+                            </mat-card >
+                            <div class="mt-2 article-info">
+                                <p class="article-date">{{ article.publish_date|date:'fullDate'|uppercase }} | <span style="font-size: 16px;">{{blog_categories[article.category].name|uppercase }}</span></p>
+                                <p class="article-title">{{article.article_title|uppercase }}</p>
+                                <div class="article-desc">{{article.article_intro}}</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="row mt-4 justify-content-center">
+                    <div class="col col-7 col-md-4 col-lg-3 blog-btn">
+                        <a href="javascript:void(0)" routerLink="/blog/articles"  class="mx-auto btn btn-outline btn-block rounded-pill pt-2 pb-2">
+                            View all articles
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>    
+</div>
+
+
+
+

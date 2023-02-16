@@ -1,0 +1,183 @@
+
+@import "../../global-scss.scss";
+  /* Responsive Styles */
+@media screen and (max-width: 767px) {
+
+}
+
+@media screen and (max-width: 575px) {
+
+}
+
+.content-wrapper{
+    flex-grow: 1;
+}
+
+.sidenav-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.container-fluid{
+    font-family: 'Lato';
+    font-weight: 500;
+    font-size: 16px;
+    padding: 0px;
+    mat-sidenav{
+        background-color: rgb(217, 229, 235);
+        color: rgb(255, 255, 255)!important;
+        width: 80%;
+        .sidenav-toolbar{
+            background-color: rgba(0, 0, 0, 0.493) !important;
+            span{
+                color: #fff;
+            }
+        }
+        .sidenav-menu{
+            padding: 20px 20px;          
+            margin-top: 0px;
+            ul{
+                list-style-type: none;
+                padding: 0px;
+                margin: 0px;
+                    
+              
+                li{
+                    color: #000;
+                    margin-bottom: 10px;
+                    a{
+                        color: #000;
+                        display: block;
+                        font-size: 18px;
+                    }
+                }
+            }
+        }
+    }
+    mat-sidenav-content{
+        .main-toolbar{
+            position: sticky;
+            top: 0;
+            z-index: 400;
+            background-color: rgba(0, 0, 0, 0.493) !important;
+            //background-color: rgb(255, 63, 15) !important;
+            color: #000 !important;
+            width: 100%;
+            .title{
+                text-transform: uppercase!important;
+                font-size: 1rem;
+                margin-left: .2em;
+            }
+            @include media-breakpoint-up(md){
+                .title{
+                    font-size: 1.5rem;
+                    margin-left: .5em;
+                }
+            }
+            .row{
+                border: $test-border;
+            }
+            span{
+                color: #fff;
+            }
+            button{
+                mat-icon{
+                    color: #fff;
+                }
+            }
+            a:hover{
+                color: lightblue;
+            }
+            .spacer-1{
+                border: $test-border;
+            }
+            .search{
+                position: absolute;
+                right: 60px;
+                width: 80%;
+                border: 3px solid yellow;
+                
+                @include media-breakpoint-up(md){
+                    right: 60px;
+                    width: 50%;
+                }
+                @include media-breakpoint-up(lg){
+                    //position: relative;
+                    right:150px;
+                    width: 40px;
+                }
+                input{
+                    width: inherit;
+                    //padding: 0px 40px 0px 0px;
+                    outline: none;
+                    border: none;
+                    font-size: 18px;
+                    
+                }
+                a{
+                    box-sizing: border-box;
+                    background-color: rgb(0, 162, 255);
+                    position: absolute;
+                    right: 0px;
+                    color: red;
+                    //padding: auto;
+                }
+                button{
+                    margin: 0px;
+                    //padding: 0px;
+                }
+            }   
+        }
+    }      
+}
+
+footer{
+    background-color: #000;
+    padding: 0px 0px;
+    border: $test-border;
+    color: $color-white;
+    .col{
+        border: $test-border;
+    }
+    .container-wrapper{
+        padding-left: 8%;
+        padding-right: 8%;
+        .nav-links{
+            border-bottom: 1px solid $color-grey;
+        }
+        
+    }
+    .footer-two{
+        padding-top: 10px;
+        padding-bottom: 20px;
+        .developer{
+            
+            @include media-breakpoint-up(md){
+                text-align: right;
+            }
+            a{
+               
+                text-decoration: underline;
+                text-decoration-color: $color-white;
+                text-decoration-thickness: 1px;
+            }
+            a:link{
+                color: $color-grey;
+            }
+        }
+    }
+}
+
+.quick-links{
+    padding-bottom: 10px;
+    padding-top: 10px;
+    //border-bottom: 1px solid $color-grey;
+    ul{
+        li{
+            margin-bottom: 8px;
+        }
+    }
+
+}      

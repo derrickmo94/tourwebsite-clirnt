@@ -1,0 +1,28 @@
+<section class="section-wrapper">
+    <div class="container">
+        <p class="title">contact us</p>
+        <div class="section-content row">
+            <div class="col col-12 col-md-4 mb-3 mb-md-0">
+                <p class="mb-1"><i class="fas fa-phone-volume mr-2"></i><span>phone</span></p>
+                <p class="mb-1">{{app_settings.phone_message}}</p>
+                <p class="align-self-end">+{{app_settings.phone_number}}</p>
+            </div>
+            <div class="col col-12 col-md-4 mb-3 mb-md-0">
+                <p class="mb-1"><i class="fas fa-envelope mr-2"></i><span>email</span></p>
+                <p class="mb-1">{{app_settings.email_message}}</p>
+                <p class="align-self-end">{{app_settings.email}}</p>
+            </div>
+            <div class="col col-12 col-md-4 mb-3 mb-md-0">
+                <p class="mb-1"><i class="fas fa-map-marker-alt mr-2"></i><span>location</span></p>
+                <p class="mb-1">{{app_settings.physical_address}}</p>
+                <p class="mb-1 text-white">Zip code: {{app_settings.address_code}}</p>
+                <p class="align-self-end">View on Google Map</p>
+            </div>
+        </div>
+    </div>
+    <div class="map" *ngIf="apiLoaded | async">
+        <google-map height="400px" width="100%" [zoom]="zoom" [center]="center" [options] = "mapOptions" [styles] = "darkStyle"></google-map>
+        <div class="map-overlay"></div>
+    </div>
+</section>
+

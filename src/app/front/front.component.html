@@ -1,0 +1,194 @@
+<!-- Toolbar -->
+<div class="container-fluid">		
+	<mat-sidenav-container class="sidenav-container">
+		<mat-sidenav #sidenav [mode]="mode" class="d-lg-none">
+			<mat-toolbar class="sidenav-toolbar">
+				<mat-toolbar-row >
+					<img
+						width="50" height="50"
+						alt="{{ app_settings.company_name }}"
+						src="{{ app_settings.logo }}"
+					/>
+					<span class="title">{{ app_settings.company_name }}</span>
+				</mat-toolbar-row>
+			</mat-toolbar>
+			
+			<div class="sidenav-menu">
+				<ul>
+					<li class="item-link">
+						<a class="a-link" (click)="sidenav.toggle()" routerLink = "/">
+							<i class="fas fa-home mr-2"></i>Home
+						</a>
+					</li>
+					<li class="item-link">
+						<a class="a-link" (click)="sidenav.toggle()" routerLink = "/tour">
+							<i class="fas fa-route mr-2"></i>Tour
+						</a>
+					</li>
+					<li class="item-link">
+						<a class="a-link" (click)="sidenav.toggle()" routerLink = "/tours">
+						<i class="fas fa-object-group mr-2"></i>Tour List</a>
+					</li>
+					<li class="item-link">
+						<a class="a-link" (click)="sidenav.toggle()" routerLink = "/blog/articles">
+							<i class="fas fa-blog mr-2"></i>Blog
+						</a>
+					</li>
+					<li class="item-link">
+						<a class="a-link" (click)="sidenav.toggle()" routerLink = "/contact">
+							<i class="far fa-address-card mr-2"></i>Contact
+						</a>
+					</li>
+					<li class="item-link">
+						<a class="a-link" (click)="sidenav.toggle()" routerLink = "/about">
+							<i class="far fa-question-circle mr-2"></i>About
+						</a>
+					</li>
+				
+				</ul>
+				<hr />			
+				<span style="text-transform: uppercase;color: rgb(172, 167, 167);">Quick Links</span>
+				<ul>
+					<li *ngFor="let t_category of categories">
+						<a href="#">&raquo; {{t_category.name }}</a>
+					</li>
+				</ul>
+				<hr />
+				<h5 style="text-transform: uppercase;color: rgb(172, 167, 167);">Contact</h5>
+				<ul>
+					<li><a href="#">Newsletter</a></li>
+					<li>{{ app_settings.physical_address }}</li>
+					<!--<li><Span style="color:  rgb(70, 68, 68); font-weight: bold;">Phone:</Span>+256 77899340</li>-->
+					<li><a href="#">{{ app_settings.email }}</a></li>
+				</ul>
+				
+			</div>
+		</mat-sidenav>
+
+		<mat-sidenav-content>
+			<mat-toolbar class="main-toolbar pr-1">
+				<mat-toolbar-row >	
+					<a class="brand mr-auto" routerLink="">
+						<img class="logo" width="50" height="50" alt="{{ app_settings.company_name }}" src="{{ app_settings.logo }}" />
+						<span class="title">{{ app_settings.company_name }}</span>
+					</a>
+				
+					<div class="row ml-4 d-none d-lg-flex">
+						<!-- <div class="col">
+							<a href="#" class="a-link" routerLink="">Home</a>
+						</div> -->
+						<div class="col">
+							<a href="#" class="a-link" routerLink="/tours">Tours</a>
+						</div>
+						<div class="col">
+							<a href="#" class="a-link" routerLink="destinations">Destinations</a>
+						</div>
+						<div class="col">
+							<a href="#" class="a-link" routerLink="/blog/articles">Blog</a>
+						</div>
+						<div class="col">
+							<a href="#" class="a-link" routerLink="/about">About</a>
+						</div>
+						<div class="col">
+							<a href="#" class="a-link" routerLink="/contact">Contact</a>
+						</div>				
+					</div>
+					
+
+					<div class="row d-none d-lg-flex ml-4">
+						<div class="col color-white">
+							<a href="#"><i class="fab fa-facebook color-white"></i></a>
+						</div>
+						<div class="col color-white">
+							<a href="#"><i class="fab fa-twitter-square color-white"></i></a>
+						</div>
+						<div class="col color-white">
+							<a href="#"><i class="fab fa-instagram color-white"></i></a>
+						</div>
+					</div>
+					<div class="row d-lg-none ml-0">
+						<div class="col p-0">
+							<button mat-icon-button (click)="sidenav.toggle()"  aria-label="Example icon-button with menu icon">
+								<mat-icon>menu</mat-icon>
+							</button>
+						</div>
+					</div>
+					
+				</mat-toolbar-row>
+			</mat-toolbar>
+
+			<router-outlet class="main-outlet"></router-outlet>
+
+			<footer>
+				<div class="container-wrapper">
+					<div class="row nav-links">
+						<div class="col col-4 col-md-2 p-2">
+							<a href="#" class="a-link" routerLink="/home">Home</a>
+						</div>
+						<div class="col col-4 col-md-2 p-2">
+							<a href="#" class="a-link" routerLink="/tours">Tours</a>
+						</div>
+						<div class="col col-4 col-md-2 p-2">
+							<a href="#" class="a-link" routerLink="destinations">Destinations</a>
+						</div>
+						<div class="col col-4 col-md-2 p-2">
+							<a href="#" class="a-link" routerLink="/blog">Blog</a>
+						</div>
+						<div class="col col-4 col-md-2 p-2">
+							<a href="#" class="a-link" routerLink="/about">About</a>
+						</div>
+						<div class="col col-4 col-md-2 p-2">
+							<a href="#" class="a-link" ro2terLink="/contact">Contact</a>
+						</div>
+					</div>
+					<div class="row quick-links d-none d-lg-flex">
+						<div class="col col-12 col-md-9 ">
+							<div class="row">
+								<div class="col col-12 col-md-4" *ngFor="let t_category of categories">
+									<a href="#">{{t_category.name|titlecase }}</a>																	
+								</div>
+							</div>		
+						</div>
+						<div class="col col-12 col-md-3">
+							<ul>
+								<li>
+									<h5 style="text-transform: uppercase;color: rgb(172, 167, 167);">Contacts</h5>
+								</li>
+								<li><a href="#">Newsletter</a></li>
+								<li>{{ app_settings.physical_address }}</li>
+								<!--<li><Span style="color:  rgb(70, 68, 68); font-weight: bold;">Phone:</Span>+256 77899340</li>-->
+								<li><a href="#">{{ app_settings.email }}</a></li>
+							</ul>
+						</div>
+					</div>
+					
+					
+				</div>	
+				<div class="footer-two">
+					<div class="container">
+					<div class="row">
+						<div class="col col-12 col-md-6 mr-auto">
+							<p>Copyright {{ year }} | All rights reserved</p>
+						</div>
+						<div class="col col-12 col-md-6">
+							<p class="developer">Developed by <a href="#">Accelerated Tecnosoft</a></p>
+						</div>
+					</div>
+					</div>
+				</div>			
+			</footer>
+		</mat-sidenav-content>
+	</mat-sidenav-container>
+</div>
+
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+
+
+

@@ -1,0 +1,93 @@
+    <mat-sidenav-container class="example-container" >
+		<mat-sidenav #sidenav [mode]="mode">
+			<p><button mat-button (click)="sidenav.toggle()">Toggle</button></p>
+			<p>
+			<mat-radio-group class="example-radio-group" [formControl]="mode">
+				<label>Mode:</label>
+				<mat-radio-button value="over">Over</mat-radio-button>
+				<mat-radio-button value="side">Side</mat-radio-button>
+				<mat-radio-button value="push">Push</mat-radio-button>
+			</mat-radio-group>
+			</p>
+		</mat-sidenav>
+
+		<mat-sidenav-content>
+			<p><button mat-button (click)="sidenav.toggle()">Toggle</button></p>
+				<router-outlet class="main-outlet"></router-outlet>
+		</mat-sidenav-content>
+	</mat-sidenav-container>
+
+
+
+
+    <footer>
+		<nav class="bottom-navigation">
+			<ul class="navigation-list">
+				<li class="item-link">
+					<a class="a-link" routerLink = "/mo/home">Home</a>
+				</li>
+				<li class="item-link">
+					<a class="a-link"  routerLink = "/toure">Toure</a>
+				</li>
+				<li class="item-link">
+					<a class="a-link"  routerLink = "/tours">Tour List</a>
+				</li>
+				<li class="item-link">
+					<a class="a-link" routerLink = "/gallery">Gallery</a>
+				</li>
+				<li class="item-link">
+					<a class="a-link" routerLink = "/blog">Blog</a>
+				</li>
+				<li class="item-link">
+					<a class="a-link" routerLink = "/contact">Contact</a>
+				</li>
+				<li class="item-link">
+					<a class="a-link" routerLink = "/about">About</a>
+				</li>
+			</ul>
+		</nav>
+		<div class="footer-one">			
+			<div>
+				<h2>Mugga Tours</h2>
+				<p>Far far away, behind the word mountains, far from the countries Vokalia and 
+					Consonantia, there live the blind texts.
+				</p>
+			</div>
+			<div>
+				<ul>
+					<li><a href="#">Newsletter</a></li>
+					<li><a href="#">Out door activities</a></li>
+					<li><a href="#">City tours</a></li>
+					<li><a href="#">Caltural and thematic tours</a></li>
+				</ul>
+			</div>
+			<div>
+				<ul>
+					<li><a href="#">Family Friendly Tours</a></li>
+					<li><a href="#">Relaxation Tours</a></li>
+					<li><a href="#">Holidy & Seasonal Tours</a></li>
+					<li><a href="#">Wild & Adeventure Tours</a></li>
+				</ul>
+			</div>
+			<div>
+				<ul>
+					<li><h2 style="text-transform: uppercase;color: rgb(70, 68, 68);">Contact</h2></li>
+					<li><span style="color:  rgb(70, 68, 68); font-weight: bold;">Address:</span>12 Main Street, Kampala</li>
+					<li><Span style="color:  rgb(70, 68, 68); font-weight: bold;">Phone:</Span>+256 77899340</li>
+					<li><a href="#">info@muggatours.com</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="footer-two">
+
+				<h3>
+					<span>Copyright 2020 | All rights reserved</span>
+	
+				</h3>
+				<div class="spacer-1"></div>
+				<h3>
+					<span>Developed by <a href="#">Accelerated Tecnosoft</a></span>
+				</h3>
+	
+		</div>
+	</footer>

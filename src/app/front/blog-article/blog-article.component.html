@@ -1,0 +1,49 @@
+<section class="main-content" id="rt" [ngStyle] = "{backgroundImage: 'url('+ article.image +')',backgroundSize:'cover',backgrondRepeat:'no-repeat'}">
+    <div class="section-content">
+        <div class="section-header">
+            <div class="container">
+                <p class="title">{{article.article_title}}</p>
+                <p class="date mb-4">{{article.publish_date | date:'mediumDate'}} | {{article.category.name}}</p>
+                <div class="intro-desc">{{article.article_intro}}</div>             
+            </div>
+        </div>
+        <div class="article-content pt-4 pb-5">
+            <div class="container">
+                <div class="article-details border-1 border-1">{{article.article}}</div>
+                <div class="recent-article mt-4">
+                    <div class="container">
+                        <div class="row mb-2 recent-article-header">
+                            <div class="col col-12 col-md-6 align-self-center mr-auto">
+                                <p class="title">Recent articles</p>
+                            </div>
+                            <div class="col col-3 col-md-1 d-none d-lg-block align-self-center">
+                                <button class="btn btn-outline rounded-circle prev-article"><i class="fas fa-arrow-left"></i></button>
+                            </div>
+                            <div class="col col-3 col-md-1 d-none d-lg-block align-self-center">
+                                <button class="btn btn-outline rounded-circle next-article"><i class="fas fa-arrow-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="recent-wrapper">                     
+                        <div  class="swiper-container" [swiper]="configf" >
+                            <div class="swiper-wrapper">                  
+                                
+                                <div class="swiper-slide" *ngFor="let latest_article of articles|slice:0:4" > 
+                                    <a class="article-link" href="javascript:void(0)" [routerLink]="['/blog/articles',latest_article.article_slug]">
+                                        <mat-card class="article-card mb-2" >                       
+                                            <img  src="{{latest_article.image}}" />  
+                                        </mat-card>  
+                                        <p class="date">{{latest_article.publish_date|date:'mediumDate'}} | {{categories[latest_article.category].name}}</p>  
+                                        <p class="title mb-1">{{latest_article.article_title}}</p>
+                                        <p class="desc">{{latest_article.article_intro}}</p>  
+                                    </a>       
+                                </div>
+                            </div>                        
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>     
+    </div>
+</section>
+

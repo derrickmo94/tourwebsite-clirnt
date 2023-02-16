@@ -1,0 +1,126 @@
+<section class="main-content">
+    <div class="section-content">
+        <div class="container">
+            <div class="section-header mb-4">
+                <p class="title">{{app_settings.company_name}} - Blog</p>
+            </div>
+            <div class="content-container row">
+                <div class="right-content col col-12 col-lg-7 p-md-0">
+                    <div class="row">
+                        <div class="content-data col col-12 mb-5" *ngFor="let article of blog_articles">
+                            <a href="javascript:void(0)" class="article-link" [routerLink]="['/blog/articles',article.article_slug]">
+                                <mat-card class="article-card mb-2" >                       
+                                    <img  src="{{article.image}}" />  
+                                </mat-card>  
+                                <p class="date">{{article.publish_date|date:'mediumDate'|uppercase}} | {{article.category.name|uppercase}}</p>  
+                                <p class="title">{{article.article_title|titlecase}}</p>
+                                <p class="desc">{{article.article_intro}}</p>  
+                            </a>
+                        </div>  
+                        <div class="col col-12 mb-5">
+                            <div class="paginator d-flex justify-content-center">
+                                <ul class="list-unstyled list-inline">
+                                    <li class="list-inline-item mb-2 mb-lg-0">
+                                        <a class="btn btn-outline-info btn-sm" href="#">first</a>
+                                    </li>
+                                    <li class="list-inline-item mb-2 mb-lg-0">
+                                        <a class="btn btn-outline-info btn-sm" href="#">previous</a>
+                                    </li>
+                                    <li class="list-inline-item mb-2 mb-lg-0">
+                                        <a class="btn btn-outline-info btn-sm" href="#">1</a>
+                                    </li>
+                                    <li class="list-inline-item mb-2 mb-lg-0">
+                                        <a class="btn btn-outline-info btn-sm" href="#">2</a>
+                                    </li>
+                                    <li class="list-inline-item mb-2 mb-lg-0">
+                                        <a class="btn btn-outline-info btn-sm" href="#">3</a>
+                                    </li>
+                                    <li class="list-inline-item mb-2 mb-lg-0">
+                                        <a class="btn btn-outline-info btn-sm" href="#">4</a>
+                                    </li>
+                                    <li class="list-inline-item mb-2 mb-lg-0 d-none d-md-inline">
+                                        <a class="btn btn-outline-info btn-sm" href="#">5</a>
+                                    </li>
+                                    <li class="list-inline-item mb-2 mb-lg-0 d-none d-md-inline">
+                                        <a class="btn btn-outline-info btn-sm" href="#">6</a>
+                                    </li>
+                                    <li class="list-inline-item mb-2 mb-lg-0 d-none d-md-inline">
+                                        <a class="btn btn-outline-info btn-sm" href="#">7</a>
+                                    </li>
+                                    <li class="list-inline-item mb-2 mb-lg-0 d-none d-md-inline">
+                                        <a class="btn btn-outline-info btn-sm" href="#">8</a>
+                                    </li>
+                                    <li class="list-inline-item mb-2 mb-lg-0">
+                                        <a class="btn btn-outline-info btn-sm" href="#">next</a>
+                                    </li>
+                                    <li class="list-inline-item mb-2 mb-lg-0">
+                                        <a class="btn btn-outline-info btn-sm" href="#">last</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>                 
+                    </div>
+                </div>
+                <div class="side-content col col-12 col-lg-5">
+                   <div class="container">
+                    <div class="row">
+                        <div class="article-categories col col-12">
+                            <h3>Categories</h3>       
+                            <ul>
+                                <li>
+                                    <a [routerLink]="['/blog/articles']">All Articles</a>
+                                </li>
+                                <li *ngFor="let category of blog_categories">
+                                    <a [routerLink]="['/blog/articles/categories',category.blog_category_slug]">{{category.name}}</a>
+                                </li>
+                            </ul>  
+                        </div>
+                        <div class="question col col-12">
+                            <p>Got a Question</p>
+                            <p>
+                                Do not hesitage to give us a call. We are an expert team and we are happy to talk to
+                                you
+                            </p>
+                            <p>+{{app_settings.phone_number}}</p>
+                            <p>{{app_settings.email}}</p>
+                        </div>
+                        <div class="latest-tours col col-12">
+                            <p class="latest-header">Latest Tours</p>       
+                                <mat-card *ngFor="let tour of tours|slice:0:2">
+                                    <a [routerLink]="['/tour', tour.tour_slug]">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col col-5 p-0 latest-tour-img">
+                                                    <img  src="{{tour.image}}" />
+                                                    <div class="latest-tour-card-overlay p-1">
+                                                        <mat-chip style="font-size: 12px;" color="primary" class="discount-tag px-2 py-0 border-0 border-rounded-sm" *ngIf="tour.discount!=0"> {{ (tour.discount/100)|percent }} off</mat-chip>
+                                                    </div>
+                                                </div>
+                                                <div class="tour-info col col-7">
+                                                    <p>{{tour.name|titlecase}}</p>       
+                                                    <p class="tour-original-price">
+                                                        <span class="original-price" [ngClass]="{'discounted text-muted':tour.discounted_price > 0,'not-discounted':tour.discounted_price <= 0}">{{tour.price|currency:'UGX':'symbol':'4.0'}}</span>
+                                                    </p>
+                                                    <p class="tour-discounted-price"> 
+                                                        <span class="discounted-price mr-2 not-discounted" *ngIf="tour.discounted_price">{{tour.discounted_price|currency:'UGX':'symbol':'4.0'}}</span>
+                                                    </p>
+                                                    <p class="tour-duration">
+                                                        <span><i class="far fa-clock mr-2"></i></span>
+                                                        <span>{{tour.duration}} days</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                          
+                                        </div>   
+                                    </a>
+                                </mat-card> 
+                        </div>
+                    </div>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

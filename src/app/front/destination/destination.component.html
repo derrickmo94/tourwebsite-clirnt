@@ -1,0 +1,97 @@
+<section class="main-content">
+    <div class="section-content">
+        <div class="container">
+            <div class="section-header mb-4">
+                <p>Explore tours by destinations</p>
+                <p>destinations</p>
+            </div>
+            <div class="content-wrapper row"> 
+                <div class="col col-12 col-md-6 col-lg-4 mb-3" *ngFor="let dest of destinations" >                   
+                    <mat-card class="destination-card">                       
+                        <img height="200px" width="100%"  src="{{dest.image}}" />  
+                        <mat-card-content>                                   
+                            <div class="container overlay">     
+                                <div class="row destination-overlay">
+                                    <div class="col col-5 mr-auto "> 
+                                        <img class="img-overlay"  src="{{dest.image}}" />  
+                                    </div>
+                                    <div class="col col-5 align-self-center">
+                                        <a class="btn-overlay btn btn-secondary btn-sm rounded-pill p-1" href="#">view details</a>
+                                    </div>
+                                </div>   
+                            </div> 
+                            <div class="conatainer">
+                                <div class="row destination-info">
+                                    <div class="col col-12">
+                                        <p class="destination-title">{{dest.name}}</p>
+                                    </div>
+                                    <div class="col col-12">
+                                        <p class="destination-desc">
+                                            {{dest.description}}
+                                        </p>
+                                    </div>
+                                </div> 
+                            
+                                <div class="container mat-card-action">
+                                    <div class="row">
+                                        <div class="col col-5">
+                                            <span class="action-one">15 tours</span>
+                                        </div>           
+                                        <div class="col col-7 action-link">
+                                            <a class="action-two btn btn-outline-info border-1 rounded-lg" href="javascript:void(0)" routerLink="/tours">View all tours</a>
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div>
+                        </mat-card-content>                                                                  
+                    </mat-card>                                      
+                </div>
+                <div class="col col-12 my-5">
+                    <div class="paginator d-flex justify-content-center">
+                        <ul class="list-unstyled list-inline">
+                            <li class="list-inline-item">
+                                <a class="btn btn-outline-info btn-sm" href="#">first</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <button class="btn btn-outline-info btn-sm" (click) = "getPrevious">previous</button>
+                                
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="btn btn-outline-info btn-sm" href="#">1</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="btn btn-outline-info btn-sm" href="#">2</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="btn btn-outline-info btn-sm" href="#">3</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="btn btn-outline-info btn-sm" href="#">4</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="btn btn-outline-info btn-sm" href="#">5</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="btn btn-outline-info btn-sm" href="#">6</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="btn btn-outline-info btn-sm" href="#">7</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="btn btn-outline-info btn-sm" href="#">8</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <button class="btn btn-outline-info btn-sm" (click) = "getNext()">next</button>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="btn btn-outline-info btn-sm" href="#">last</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

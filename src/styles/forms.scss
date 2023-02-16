@@ -1,0 +1,37 @@
+
+form{
+    .outer-col,table{
+            border-bottom: 1px solid rgb(172, 172, 172);
+        input[type=text], input[type=email], input[type=number], input[type=password],select,textarea{
+            vertical-align: middle;
+            padding: 6px 6px;
+            border: 1px solid  rgb(155, 155, 155);
+            border-radius: 4px;
+            background-color: rgb(252, 252, 252);
+            width: 100%;
+        }
+        input:hover,select:hover,textarea:hover{
+            box-shadow: 1px 1px 1px 0px rgb(189, 189, 189), -1px -1px 1px 0px rgb(189, 189, 189);
+        }
+        input[type=file]{
+            display: none;
+        }
+        .custom-file{
+            width: 90px;
+            height: 90px;
+            label{
+                border: 1px solid  rgb(155, 155, 155);
+                width: 90px;
+                height: 90px;
+                padding: 2px;
+                border-radius: 4px;
+            }
+            label:hover{
+                cursor: pointer;
+                box-shadow: 1px 1px 1px 0px rgb(189, 189, 189), -1px -1px 1px 0px rgb(189, 189, 189);
+            }
+        }
+
+    }
+}
+

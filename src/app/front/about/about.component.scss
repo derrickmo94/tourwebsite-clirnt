@@ -1,0 +1,117 @@
+@import "../../../global-scss.scss";
+.section-wrapper{
+    background-color: $color-black;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    .col{
+        border: $test-border;
+    }
+    .section-header{
+        margin-bottom: 3%;
+        margin-top: 3%;
+        border: $test-border;
+        color: $color-white;
+        .title{
+            text-transform: capitalize;
+            font-size: $size-2rem;
+            font-weight: 600;
+            color: $color-white;
+        } 
+        button{
+            color: $color-white;
+            border-color: $color-white;
+        }  
+    }
+        
+    .images{
+        border: $test-border;
+        mat-card{
+            padding: 0px;
+            border-radius: 10px;
+            outline: none;
+            img{
+                border-radius: 10px;
+                width: 100%;
+                height: 250px;  
+              
+                @include media-breakpoint-up(lg){
+                    height: 300px;  
+                }  
+            }          
+        }      
+    }   
+              
+      
+    .section-content{
+        //padding: $size-25px  $size-25px $size-8rem $size-25px;
+        border: $test-border;
+        margin-top: 1rem;
+        .title{
+            color: $color-white;
+            font-size: $size-2rem;
+            font-weight: bolder;
+        }
+        .about-desc{
+            color: $color-white;
+            margin-top: $size-1rem;
+        }
+        .stats{
+            .col{
+                //text-align: center;
+                //padding: 0px;
+                p:first-child{
+                    border: $test-border;
+                    font-size: $size-6rem;
+                    color: $color-orange-bright;
+                    font-weight: 300;
+                }
+                p:last-child{
+                    border: $test-border;
+                    font-size: $size-1rem;
+                    color: $color-white;
+                    font-weight: 400;
+                }
+            }
+        }
+        .profile-imgs{
+            margin-top: $size-2rem;
+            .title{
+                text-transform: capitalize;
+                color: $color-white;
+                font-size: $size-2rem;
+                font-weight: bolder;
+            }
+            mat-card{
+                padding: 0px;
+                border-radius: $size-10px;
+                img{
+                    width: 100%;
+                    height: 300px;
+                    border-radius: $size-10px $size-10px 0px 0px;
+                    @include media-breakpoint-up(md){
+                        height: 200px;  
+                    }   
+                    @include media-breakpoint-up(lg){
+                        height: 300px;  
+                    }  
+                }
+                mat-card-content{
+                    padding: 20px;
+                    p:first-child{
+                        color: $color-black-light;
+                        font-size: $size-1-5rem;
+                        font-weight: 600;
+                        text-transform: capitalize;
+                    }
+                    p:last-child{
+                        color: $color-grey;
+                        text-transform: capitalize;
+                        font-style: italic;
+                        font-weight: normal;
+                    }
+                }
+            }
+            
+        }
+    }
+}

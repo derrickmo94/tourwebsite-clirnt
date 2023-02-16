@@ -1,0 +1,252 @@
+<section class="main-content">
+    <div class="tours-container">
+        <div class="top-wrapper">
+            <div class="top-overlay">
+                <div class="container-fluid">
+                    <div class="row px-0">
+                        <div class="search-tours col col-12 px-4">
+                            <p class="sub-title">Search Tours</p>
+                            <p class="search-header title">{{ title|titlecase }}</p>
+                           <!-- <mat-card class="search-tours-form">
+                                <div class="section-content">
+                                    <div class="input-set">
+                                        <form [formGroup]="searchToureForm" class="search-tour-form" [style.fontSize.px]="16">                    
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Key word</mat-label>
+                                                <input matInput type="text" id="keyword" formControlName="keyWord">
+                                                <span matSuffix><mat-icon>search</mat-icon></span>
+                                            </mat-form-field>
+                                            
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Activity</mat-label>
+                                                <mat-select required id="activity" formControlName="activity">
+                                                    <mat-option>-- None --</mat-option>
+                                                    <mat-option value="option">Option</mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                            
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Destination</mat-label>
+                                                <mat-select id="destination" required formControlName="destination">
+                                                    <mat-option>-- None --</mat-option>
+                                                    <mat-option value="option">Option</mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                            
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Duration</mat-label>
+                                                <mat-select id="duration" required formControlName="duration">
+                                                    <mat-option>-- None --</mat-option>
+                                                    <mat-option value="option">Option</mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                            
+                                            <mat-form-field color="accent" appearance="outline">
+                                                <mat-label>Date</mat-label>
+                                                <input matInput id="date" [matDatepicker]="picker1" formControlName="date">
+                                                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                                <mat-datepicker #picker1></mat-datepicker>
+                                            </mat-form-field>
+                                            <button mat-fab type="submit"><mat-icon>search</mat-icon></button>                                      
+                                        </form>
+                                    </div>
+                                </div>
+                            </mat-card>-->
+                        </div>
+                        
+                    </div>
+                    <div class="destinations-slider col col-12 p-0  mt-4">
+                        <div  class="swiper-container" [swiper]="destinationConfig" >
+                            <div class="swiper-wrapper free-flow">             
+                                <mat-card class="swiper-slide p-0" *ngFor="let dest of destinations" >                       
+                                    <img height="100px" width="100%"  src="{{dest.image}}" />
+                                    <div class="country-overlay">
+                                        <div class="container">
+                                            <div class="row justify-content-center">
+                                                <div class="col col-10 align-self-center">
+                                                    <p>{{dest.name}}</p>  
+                                                </div>
+                                            </div>
+                                        </div>                           
+                                    </div>                   
+                                </mat-card>                                        
+                            </div> 
+                            <div class="swiper-overlay"></div>         
+                        </div>  
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container mt-4">
+            <div class="tours-content row">
+                <div class="tours-main-content col col-12 col-lg-7">                        
+                    <div class="row" *ngIf="tours!=''; else ntours">
+                        <div class="col col-12 mb-3" *ngFor="let tour of tours">                   
+                            <a class="tour-link" [routerLink]="['/tour/',tour.tour_slug]">                      
+                                <mat-card>                       
+                                    <img src="{{tour.image}}" />    
+
+                                    <div class="card-overlay">
+                                        <mat-chip-list>
+                                            <mat-chip color="primary" class="discount-tag" *ngIf="tour.discount > 0"> {{ (tour.discount/100)|percent }} off</mat-chip>
+                                            <mat-chip color="accent" class="status-tag" *ngIf="tour.new_tag">{{ tour.new_tag }}</mat-chip>
+                                        </mat-chip-list> 
+                                        <div class="container">
+                                            <div class="row overlay-body">  
+                                                <div class="body-content">
+                                                    <div class="col col-12 px-0 rating">
+                                                        <ngb-rating [(rate)]="tour.rating">
+                                                            <ng-template let-fill="fill" let-index="index">
+                                                                <span class="star" [class.filled]="fill === 100">&#9733;</span>
+                                                            </ng-template>
+                                                        </ngb-rating>
+                                                        <span class="reviews">(200 Reviews)</span>
+                                                    </div>               
+                                                    <div class="col col-12 px-1 overlay-title" *ngIf="tour.name">
+                                                        <span>{{tour.name|titlecase}}</span>
+                                                    </div> 
+                                                                            
+                                                    <div class="col col-12 p-0 overlay-text" *ngIf="tour.description">{{tour.description}}</div> 
+                                                </div>
+                                                <div class="col col-12 overlay-footer" *ngIf="tour.duration">
+                                                    <i class="far fa-clock fa-2x"></i>            
+                                                    <span class="icon-text">{{tour.duration}} days</span>
+                                                </div> 
+                                                
+                                            </div>    
+                                        </div>                                     
+                                    </div>                       
+                                </mat-card>    
+                            </a>
+                        </div>
+                        <div class="col col-12 mt-5">
+                            <div class="paginator d-flex justify-content-center">
+                                <ul class="list-unstyled list-inline">
+                                    <li class="list-inline-item">
+                                        <a class="btn btn-outline-info btn-sm" href="#">first</a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a class="btn btn-outline-info btn-sm" href="#">previous</a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a class="btn btn-outline-info btn-sm" href="#">1</a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a class="btn btn-outline-info btn-sm" href="#">2</a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a class="btn btn-outline-info btn-sm" href="#">3</a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a class="btn btn-outline-info btn-sm" href="#">4</a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a class="btn btn-outline-info btn-sm" href="#">5</a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a class="btn btn-outline-info btn-sm" href="#">6</a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a class="btn btn-outline-info btn-sm" href="#">7</a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a class="btn btn-outline-info btn-sm" href="#">8</a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a class="btn btn-outline-info btn-sm" href="#">next</a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a class="btn btn-outline-info btn-sm" href="#">last</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <ng-template #ntours><p>There are no tours in this category</p></ng-template>
+
+                </div>
+                <div class="tours-side-content col col-12 col-lg-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="latest-tours col col-12" style="position: sticky; top: 70px;">
+                                <p class="latest-header">Latest Tours</p> 
+                                <ng-container *ngIf="tours!=''; else notours ">    
+                                    <mat-card *ngFor="let tour of tours|slice:0:2">
+                                        <a [routerLink]="['/tour',tour.tour_slug]">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col col-5 p-0 latest-tour-img">
+                                                        <img  src="{{tour.image}}" />
+                                                        <div class="latest-tour-card-overlay p-1">
+                                                            <mat-chip style="font-size: 12px;" color="primary" class="discount-tag px-2 py-0 border-0 border-rounded-sm" *ngIf="tour.discount > 0"> {{ (tour.discount/100)|percent }} off</mat-chip>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tour-info col col-7">
+                                                        <p>{{tour.name|titlecase}}</p>       
+                                                        <p class="tour-original-price">
+                                                            <span class="original-price" [ngClass]="{'discounted text-muted':tour.discounted_price > 0,'not-discounted':tour.discounted_price <= 0}">{{tour.price|currency:'UGX':'symbol':'4.0'}}</span>
+                                                        </p>
+                                                        <p class="tour-discounted-price"> 
+                                                            <span class="discounted-price mr-2 not-discounted" *ngIf="tour.discounted_price">{{tour.discounted_price|currency:'UGX':'symbol':'4.0'}}</span>
+                                                        </p>
+                                                        <p class="tour-duration">
+                                                            <span><i class="far fa-clock mr-2"></i></span>
+                                                            <span>{{tour.duration}} days</span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="latest-tour-card-overlay"></div>
+                                            </div>   
+                                        </a>
+                                    </mat-card> 
+                                </ng-container> 
+                                <ng-template #notours ><p style="color: black;">latest tours unvailable</p></ng-template> 
+                            </div>
+                            <div class="tour-category col col-12" style="position: sticky; top: 70px;" >
+                                <p class="category-header">Tour Category</p>
+                                <ul>
+                                    <li *ngFor="let t_cate of tour_categories|slice:0:8">
+                                        <a [routerLink]="['/tours/categories',t_cate.category_slug]">
+                                            {{t_cate.name|titlecase}}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="recent-articles col col-12" style="position: sticky; top: 70px;">
+                                <p class="recent-header">Recent Articles</p>       
+                                <mat-card *ngFor="let article of blog_articles|slice:0:2">
+                                    <a [routerLink]="['/blog/articles',article.article_slug]">
+                                        <div class="container">
+                                            <div class="article-info row">
+                                                <div class="col col-4 p-0" >
+                                                    <img height="130px" width="100%"  src="{{article.image}}" />
+                                                </div>
+                                                <div class="col col-8 p-1">
+                                                    <p>{{article.article_title|titlecase}}</p>
+                                                    <p>
+                                                        <i class="far fa-clock mr-2"></i>
+                                                        <span>{{article.publish_date|date:'fullDate'}}</span>
+                                                    </p>
+                                                </div>
+                                            
+                                            </div>   
+                                        </div>    
+                                    </a>
+                                </mat-card>     
+                            </div>
+                            <div class="question col col-12" style="position: sticky; top: 70px;">
+                                <p class="question-header">Got a Question</p>
+                                <p>
+                                    Do not hesitage to give us a call. We are an expert team and we are happy to talk to
+                                    you
+                                </p>
+                                <p class="question-contact">+{{app_settings.phone_number}}</p>
+                                <p class="question-email">{{app_settings.email}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
